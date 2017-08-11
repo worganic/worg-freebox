@@ -3,6 +3,7 @@
 import urllib
 import json
 import os
+import urllib.request
 
 from flask import Flask
 from flask import request
@@ -28,15 +29,18 @@ def webhook():
     return r
 
 def makeWebhookResult(req):
-    if req.get("result").get("action") != "ecommerce.frais":
+    if req.get("result").get("action") != "freebox.chaines":
         return {}
     result = req.get("result")
     parameters = result.get("parameters")
-    zone = parameters.get("frais-zone")
+    zone = parameters.get("chaines")
 
-    cost = {'Europe':100, 'Amerique du nord':200, 'Amerique du sud':300, 'Asie':400, 'Afrique':500}
+    cost = {'1':1, '2':2, '3':3, '4':5, '5':5}
 
-    speech = "Les frais de port pour la zone " + zone + " sont de " + str(cost[zone]) + " euros."
+#    local_filename, headers = urllib.request.urlretrieve('http://82.66.190.153:8081/pub/remote_control?code=21357594&key=' + cost[zone])
+#    html = open(local_filename)
+
+    speech = "Les viens de vous mettre la " + zone + " (" + cost[zone] + ") ème chaîne sur votre freebox."
 
     print("Response:")
     print(speech)
