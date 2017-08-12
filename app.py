@@ -34,7 +34,12 @@ def makeWebhookResult(req):
     result = req.get("result")
     parameters = result.get("parameters")
     zone = parameters.get("Chaines")
-
+    
+    action = parameters.get("freebox.action")
+    
+    
+    
+    
     freeboxIp = '82.66.190.153:8081';
     freeboxCodeTel = '21357594';
     url = 'http://' + freeboxIp + '/pub/remote_control?code=' + freeboxCodeTel + '&key=';
