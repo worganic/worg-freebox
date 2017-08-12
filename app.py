@@ -3,7 +3,7 @@
 import urllib
 import json
 import os
-import urllib
+import urllib.request
     
 from flask import Flask
 from flask import request
@@ -40,7 +40,7 @@ def makeWebhookResult(req):
     url = 'http://' + freeboxIp + '/pub/remote_control?code=' + freeboxCodeTel + '&key=';
     url = url + zone;
         
-    page = urllib.urlopen(url) 
+    page = urllib.request.urlopen(url) 
     strpage = page.read()
 
     cost = {'1':'TF1', '2':'france 2', '3':'france 3', '4':'canal plus', '5':'france 5', '6':'M 6'}
