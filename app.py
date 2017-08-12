@@ -3,7 +3,8 @@
 import urllib
 import json
 import os
-
+import urllib
+    
 from flask import Flask
 from flask import request
 from flask import make_response
@@ -34,6 +35,14 @@ def makeWebhookResult(req):
     parameters = result.get("parameters")
     zone = parameters.get("Chaines")
 
+    freeboxIp = '82.66.190.153:8081';
+    freeboxCodeTel = '21357594';
+    url = 'http://' + freeboxIp + '/pub/remote_control?code=' + freeboxCodeTel + '&key=';
+    url = url + zone;
+        
+    page = urllib.urlopen(url) 
+    strpage = page.read()
+
     cost = {'1':'TF1', '2':'france 2', '3':'france 3', '4':'canal plus', '5':'france 5', '6':'M 6'}
 
     speech = cost[zone] + " va être lancé sur votre Freebox."
@@ -46,7 +55,7 @@ def makeWebhookResult(req):
         "displayText": speech,
         #"data": {},
         # "contextOut": [],
-        "source": "apiai-onlinestore-shipping"
+        "source": "apiai-worganic-freebox"
     }
 
 
