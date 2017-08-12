@@ -34,9 +34,9 @@ def makeWebhookResult(req):
     parameters = result.get("parameters")
     zone = parameters.get("Chaines")
 
- #   cost = {'1':1, '2':2, '3':300, 'Asie':400, 'Afrique':500}
+    cost = {'1':'TF1', '2':'france 2', '3':'france 3', '4':'canal plus', '5':'france 5', '6':'M 6'}
 
-    speech = "La chaine " + zone + " va être lancé sur votre Freebox."
+    speech = cost[zone] + " va être lancé sur votre Freebox."
 
     print("Response:")
     print(speech)
